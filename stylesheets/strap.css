@@ -1,0 +1,44 @@
+body {
+  background-color: #33CCCC;
+  color: #fff;
+  font-family: 'Cabin';
+  font-size: 15px;
+  line-height: 25px;
+  padding-top: 50px;
+}
+
+#main {
+  padding: 40px 15px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#main h1 {
+  font-family: 'Lobster';
+  text-shadow: rgba(0, 0, 0, 0.14902) 0 1px 0;
+  font-size: 70px;
+  line-height: 100px;
+}
+
+
+.row {
+  margin-bottom: 15px;
+}
+
+#call {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 20px 24px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+textarea {
+  border: 0px;
+  height: 80%; 
+  resize: none;
+}

@@ -1,0 +1,91 @@
+<title>Alex Stachowiak - Text</title>
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<style type="text/css">
+  #editor {
+    font-family: "Courier";
+    font-size: 20px;
+    line-height: 125%;
+    margin-top: 1.2%;
+    width: 100%;
+  }
+  body {
+    font-family: "Courier New", monospace;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5%;
+    width: 60%;
+  }
+  textarea:focus {
+    outline: none;
+  }
+  textarea {
+    border: 0px;
+    height: 80%; 
+    resize: none;
+  }
+</style>
+<script type="text/javascript">
+  var text = "";
+  var mode = "";
+  function countWords () {
+    var t = $('#editor').val();
+    words = t.split(/ /);
+    num_words = words.length;
+    if (t.length < 1)
+      num_words = 0;
+    return num_words;
+  }
+  function init () {
+    document.forms['textForm'].elements['editor'].focus();
+  }
+
+</script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-41270111-1', 'alexstachowiak.com');
+ga('send', 'pageview');
+
+</script>
+
+<link href="//fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<body id="b" onload="init();">
+  <form name="textForm">
+    <div id="l"> i am not an editor </div>
+    <textarea id="editor" autocomplete="off"></textarea>
+  </form>
+  <span id="field"><span style="float: right;">0 words</span></span>
+  <script>
+    $('body').on('keydown', function (e) {
+      var key = e.which;
+      switch (key) {
+        case 27:
+          mode = "--escape--";
+          document.forms['textForm'].elements['editor'].blur();
+          break;
+        case 9:
+          e.preventDefault();
+          mode = "--tab--";
+          break;
+        case 73:
+          document.forms['textForm'].elements['editor'].focus();
+          break;
+        default:
+          text = key + "\n";
+          mode = "";
+        
+      }
+      num_words = countWords ();
+      $('#field').html (text + "<span style=\"float: right;\">" + num_words + "  words   </span><br>" + mode);
+    });
+    $('#editor').on('keyup', function(e) {
+      num_words = countWords ();
+      $('#field').html (text + "<span style=\"float: right;\">" + num_words + "  words   </span><br>" + mode);
+    });
+  </script>
+</body>
